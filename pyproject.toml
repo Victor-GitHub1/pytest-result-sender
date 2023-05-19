@@ -1,4 +1,10 @@
 [tool.pdm]
+[tool.pdm.dev-dependencies]
+dev = [
+    "black>=23.3.0",
+    "isort>=5.12.0",
+    "flake8>=6.0.0",
+]
 
 [project]
 name = "pytest-result-sender03"
@@ -9,6 +15,7 @@ authors = [
 ]
 dependencies = [
     "pytest>=7.3.1",
+    "requests>=2.30.0",
 ]
 requires-python = ">=3.10"
 readme = "README.md"
@@ -24,3 +31,30 @@ build-backend = "pdm.pep517.api"
 [tool]
 [tool.pdm.build]
 package-dir = "src"
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+
+[tool.black]
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.tox
+  | venv
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+# 设置快捷命令别名
+[tool.pdm.scripts]
+check = { composite = [
+    "isort .",
+    "black .",
+    "flake8 .",
+] }
+
+test = "pytest"
