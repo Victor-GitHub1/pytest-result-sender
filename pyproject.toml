@@ -7,8 +7,8 @@ dev = [
 ]
 
 [project]
-name = "pytest-result-sender03"
-version = "0.1.0"
+name = "pytest-result-sender"
+version = "0.1.1"
 description = ""
 authors = [
     {name = "Victor.Gu", email = "guyupei@foxmail.com"},
